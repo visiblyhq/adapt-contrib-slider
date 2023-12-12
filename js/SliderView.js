@@ -1,3 +1,4 @@
+import Adapt from 'core/js/adapt';
 import QuestionView from 'core/js/views/questionView';
 
 class SliderView extends QuestionView {
@@ -14,6 +15,11 @@ class SliderView extends QuestionView {
     if (this.model.get('_isSubmitted')) return;
 
     this.selectItem(this.getIndexFromValue(this.model.get('_selectedItem').value));
+  }
+
+  addButtonsView() {
+    this.model.set("_isButtonInitiallyDisabled", false);
+    Adapt.trigger("questionView:AddButtonsView", this);
   }
 
   onQuestionRendered() {
